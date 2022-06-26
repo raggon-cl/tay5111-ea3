@@ -19,7 +19,7 @@ resource "aws_efs_mount_target" "efs-mt" {
 
 # Creating Mount Point for EFS on server1a
 resource "null_resource" "configure_nfs_server1a" {
-  depends_on = [aws_efs_mount_target.efs-mt]
+  depends_on = [aws_efs_mount_target.efs-mt, time_sleep.wait_330_seconds]
   connection {
     type        = "ssh"
     user        = "ec2-user"
@@ -33,16 +33,16 @@ resource "null_resource" "configure_nfs_server1a" {
       # Mounting Efs 
       "sudo mount -t nfs -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport ${aws_efs_file_system.efs.dns_name}:/  /var/www/html",
       # Making Mount Permanent
-      "echo ${aws_efs_file_system.efs.dns_name}:/ /var/www/html nfs4 defaults,_netdev 0 0  | sudo cat >> /etc/fstab ",
+      # "sudo su -",
+      # "echo ${aws_efs_file_system.efs.dns_name}:/ /var/www/html nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport,_netdev 0 0  | cat >> /etc/fstab ",      
       "sudo chmod go+rw /var/www/html",
-      ##"sudo git clone https://github.com/Apeksh742/EC2_instance_with_terraform.git /var/www/html",
     ]
   }
 }
 
 # Creating Mount Point for EFS on server1b
 resource "null_resource" "configure_nfs_server1b" {
-  depends_on = [aws_efs_mount_target.efs-mt]
+  depends_on = [aws_efs_mount_target.efs-mt, time_sleep.wait_330_seconds]
   connection {
     type        = "ssh"
     user        = "ec2-user"
@@ -56,16 +56,16 @@ resource "null_resource" "configure_nfs_server1b" {
       # Mounting Efs 
       "sudo mount -t nfs -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport ${aws_efs_file_system.efs.dns_name}:/  /var/www/html",
       # Making Mount Permanent
-      "echo ${aws_efs_file_system.efs.dns_name}:/ /var/www/html nfs4 defaults,_netdev 0 0  | sudo cat >> /etc/fstab ",
+      # "sudo su -",
+      # "echo ${aws_efs_file_system.efs.dns_name}:/ /var/www/html nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport,_netdev 0 0  | cat >> /etc/fstab ",
       "sudo chmod go+rw /var/www/html",
-      ##"sudo git clone https://github.com/Apeksh742/EC2_instance_with_terraform.git /var/www/html",
     ]
   }
 }
 
 # Creating Mount Point for EFS on server1c
 resource "null_resource" "configure_nfs_server1c" {
-  depends_on = [aws_efs_mount_target.efs-mt]
+  depends_on = [aws_efs_mount_target.efs-mt, time_sleep.wait_330_seconds]
   connection {
     type        = "ssh"
     user        = "ec2-user"
@@ -79,9 +79,9 @@ resource "null_resource" "configure_nfs_server1c" {
       # Mounting Efs 
       "sudo mount -t nfs -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport ${aws_efs_file_system.efs.dns_name}:/  /var/www/html",
       # Making Mount Permanent
-      "echo ${aws_efs_file_system.efs.dns_name}:/ /var/www/html nfs4 defaults,_netdev 0 0  | sudo cat >> /etc/fstab ",
+      # "sudo su -",
+      # "echo ${aws_efs_file_system.efs.dns_name}:/ /var/www/html nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport,_netdev 0 0  | cat >> /etc/fstab ",
       "sudo chmod go+rw /var/www/html",
-      ##"sudo git clone https://github.com/Apeksh742/EC2_instance_with_terraform.git /var/www/html",
     ]
   }
 }
