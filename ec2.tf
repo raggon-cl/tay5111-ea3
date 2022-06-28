@@ -4,6 +4,7 @@ resource "aws_instance" "server1a" {
   key_name               = aws_key_pair.server_key.id
   subnet_id              = module.vpc.public_subnets[0]
   vpc_security_group_ids = [aws_security_group.ec2.id, aws_security_group.sg_efs.id]
+  iam_instance_profile   = "EMR_EC2_DefaultRole"
   user_data              = <<EOF
     #!/bin/bash
     sudo yum -y update
@@ -11,8 +12,6 @@ resource "aws_instance" "server1a" {
     sudo systemctl start httpd
     sudo systemctl enable httpd
     EOF
-
-  #  depends_on = [time_sleep.wait_300_seconds]
 
   tags = {
     Name        = "server1a"
@@ -28,6 +27,7 @@ resource "aws_instance" "server1b" {
   key_name               = aws_key_pair.server_key.id
   subnet_id              = module.vpc.public_subnets[1]
   vpc_security_group_ids = [aws_security_group.ec2.id, aws_security_group.sg_efs.id]
+  iam_instance_profile   = "EMR_EC2_DefaultRole"
   user_data              = <<EOF
     #!/bin/bash
     sudo yum -y update
@@ -35,8 +35,6 @@ resource "aws_instance" "server1b" {
     sudo systemctl start httpd
     sudo systemctl enable httpd
     EOF
-
-  #  depends_on = [time_sleep.wait_300_seconds]
 
   tags = {
     Name        = "server1b"
@@ -51,6 +49,7 @@ resource "aws_instance" "server1c" {
   key_name               = aws_key_pair.server_key.id
   subnet_id              = module.vpc.public_subnets[2]
   vpc_security_group_ids = [aws_security_group.ec2.id, aws_security_group.sg_efs.id]
+  iam_instance_profile   = "EMR_EC2_DefaultRole"
   user_data              = <<EOF
     #!/bin/bash
     sudo yum -y update
@@ -58,8 +57,6 @@ resource "aws_instance" "server1c" {
     sudo systemctl start httpd
     sudo systemctl enable httpd
     EOF
-
-  #  depends_on = [time_sleep.wait_300_seconds]
 
   tags = {
     Name        = "server1c"
