@@ -11,6 +11,8 @@ module "vpc" {
   enable_nat_gateway = true
   enable_vpn_gateway = false
 
+  enable_dns_hostnames = true
+
   tags = {
     Terraform   = "true"
     Environment = "prd"
