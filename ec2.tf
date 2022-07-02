@@ -12,7 +12,7 @@ resource "aws_instance" "server1a" {
     sudo systemctl start httpd
     sudo systemctl enable httpd
     EOF
-  
+
   tags = {
     Name        = "server1a"
     Terraform   = "true"
@@ -35,7 +35,7 @@ resource "aws_instance" "server1b" {
     sudo systemctl start httpd
     sudo systemctl enable httpd
     EOF
-  
+
   tags = {
     Name        = "server1b"
     Terraform   = "true"
@@ -57,7 +57,7 @@ resource "aws_instance" "server1c" {
     sudo systemctl start httpd
     sudo systemctl enable httpd
     EOF
-  
+
   tags = {
     Name        = "server1c"
     Terraform   = "true"

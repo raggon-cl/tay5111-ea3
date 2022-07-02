@@ -91,7 +91,7 @@ resource "aws_security_group" "http_ingress" {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
-  
+
   tags = {
     Name        = "allow_http"
     Terraform   = "true"

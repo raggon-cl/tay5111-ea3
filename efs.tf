@@ -89,7 +89,7 @@ resource "null_resource" "configure_nfs_server1c" {
 # Download index.php on EFS resource
 resource "null_resource" "download_index_efs" {
   depends_on = [null_resource.configure_nfs_server1a, null_resource.configure_nfs_server1b, null_resource.configure_nfs_server1c]
-  
+
   connection {
     type        = "ssh"
     user        = "ec2-user"
