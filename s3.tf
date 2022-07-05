@@ -1,8 +1,15 @@
+resource "random_string" "s3_name" {
+  length           = 10
+  special          = false
+  upper            = false
+  override_special = "/@£$"
+}
+
 resource "aws_s3_bucket" "bucket-s3" {
-  bucket = "tay5111-aguilar-v2"
+  bucket = "tay5111-${random_string.s3_name.result}"
 
   tags = {
-    Name        = "TAY5111-AGUILAR"
+    Name        = "tay5111-${random_string.s3_name.result}"
     Environment = "prd"
   }
 }
