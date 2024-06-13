@@ -17,10 +17,10 @@ resource "random_id" "bucket" {
 }
 
 resource "aws_s3_bucket" "mybucket" {
-  bucket = "mybucket${random_id.bucket.hex}"
+  bucket = "mybucket-${random_id.bucket.hex}"
 
   tags = {
-    Name = "mybucket${random_id.bucket.hex}"
+    Name = "mybucket-${random_id.bucket.hex}"
   }
 }
 
